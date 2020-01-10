@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public Rigidbody2D rb;
+    public Transform creater;
+    public Rigidbody rb;
 
-    public Vector2 direction;
+    public Vector3 direction;
     public float speed = 1;
 
     public float lifetime = 10;
@@ -28,4 +29,13 @@ public class BulletController : MonoBehaviour
 
         rb.MovePosition(rb.position + direction * speed * Time.fixedDeltaTime);
     }
+
+    void OnCollisionEnter(Collision col)
+    {
+        if (col.gameObject.transform != creater)
+        {
+            Destroy(gameObject);
+        }
+    }
+    
 }
