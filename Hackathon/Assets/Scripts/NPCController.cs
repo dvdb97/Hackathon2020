@@ -6,7 +6,7 @@ public class NPCController : MonoBehaviour
 {
     public float speed = 1f;
 
-    public Vector3[] points = new Vector3[3];
+    public Transform[] points = new Transform[4];
 
     private float distance;
     private Vector3 direction;
@@ -24,9 +24,9 @@ public class NPCController : MonoBehaviour
     {
         Vector3 result = new Vector3(0f, 0f, 0f);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
-            result += Random.Range(-1f, 1f) * points[i];
+            result += Random.Range(-1f, 1f) * points[i].position;
         }
 
         nextDestination = result;
