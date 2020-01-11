@@ -41,7 +41,6 @@ public class GunController : MonoBehaviour
 
         BulletController bulletController = bullet.GetComponent<BulletController>();
         bulletController.direction = new Vector3(direction.x, direction.y, 0f);
-        bulletController.creater = playerTransform;
     }
 
 }

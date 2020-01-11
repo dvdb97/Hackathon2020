@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NPCGunController : MonoBehaviour
 {
-
     public GunController gc;
     public float cooldown = 1f;
     private float currentCooldown = 0f;
