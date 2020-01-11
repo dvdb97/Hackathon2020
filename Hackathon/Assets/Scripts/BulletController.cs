@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    public Transform creater;
     public Rigidbody rb;
 
     public Vector3 direction;
     public float speed = 1;
+    public int dmg = 20;
 
     public float lifetime = 10;
 
@@ -32,10 +32,23 @@ public class BulletController : MonoBehaviour
 
     void OnCollisionEnter(Collision col)
     {
-        if (col.gameObject.transform != creater)
+        NPCController npcController = col.gameObject.GetComponent<NPCController>();
+
+        if (npcController != null)
         {
-            Destroy(gameObject);
+            npcController.hp -= dmg;
+            Debug.Log("NPC hit!");
         }
+
+        PlayerController playerController = col.gameObject.GetComponent<PlayerController>();
+
+        if (playerController != null)
+        {
+            playerController.hp -= dmg;
+            Debug.Log("Enemy hit!");
+        }
+
+        Destroy(gameObject);
     }
     
 }

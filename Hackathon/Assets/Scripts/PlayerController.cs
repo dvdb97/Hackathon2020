@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int hp = 100;
     public float moveSpeed;
 
     public GunController gc;
     public Rigidbody rb;
+    public HPBarController hpBar;
 
     private Vector3 movement;
 
@@ -21,6 +23,9 @@ public class PlayerController : MonoBehaviour
         {
             gc.Fire();
         }
+
+        Debug.Log(hp);
+        hpBar.SetValue(hp / 100f);
     }
 
     void FixedUpdate()

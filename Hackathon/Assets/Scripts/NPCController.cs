@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
+    public int hp = 100;
     public float speed = 1f;
 
     public Transform[] points = new Transform[4];
@@ -37,6 +38,11 @@ public class NPCController : MonoBehaviour
 
     public void FixedUpdate()
     {
+        if (hp <= 0)
+        {
+            Destroy(gameObject);
+        }
+
         if (distance > 0f)
         {
             Debug.Log("Moving!");
